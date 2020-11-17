@@ -1,0 +1,23 @@
+server:
+  port: 9000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes[0]:
+       id: system
+       uri: lb://system
+       predicates[0]:
+         name: Path
+         args[0]: /system/**
+
+
+
+
