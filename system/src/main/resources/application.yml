@@ -13,6 +13,7 @@ spring:
         ddl-auto: none
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: true
+    show-sql: true
   #配置数据源
   datasource:
     druid:
