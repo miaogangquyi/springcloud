@@ -17,6 +17,7 @@ package com.mogo.util;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
+import com.mogo.annotation.DataPermission;
 import com.mogo.annotation.Query;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,8 +29,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @author Zheng Jie
- * @date 2019-6-4 14:59:48
+ * miaogang
+ * 20201120
  */
 @Slf4j
 @SuppressWarnings({"unchecked","all"})
@@ -44,15 +45,16 @@ public class QueryHelp {
         //DataPermission permission = query.getClass().getAnnotation(DataPermission.class);
         //if(permission != null){
         //    // 获取数据权限
-        //    List<Long> dataScopes = SecurityUtils.getCurrentUserDataScope();
-        //    if(CollectionUtil.isNotEmpty(dataScopes)){
+        //    //List<Long> dataScopes = SecurityUtils.getCurrentUserDataScope();
+        //    //if(CollectionUtil.isNotEmpty(dataScopes)){
         //        if(StringUtils.isNotBlank(permission.joinName()) && StringUtils.isNotBlank(permission.fieldName())) {
         //            Join join = root.join(permission.joinName(), JoinType.LEFT);
+        //            list.add(getExpression(permission.fieldName(),join, root).in(dataScopes));
         //            list.add(getExpression(permission.fieldName(),join, root).in(dataScopes));
         //        } else if (StringUtils.isBlank(permission.joinName()) && StringUtils.isNotBlank(permission.fieldName())) {
         //            list.add(getExpression(permission.fieldName(),null, root).in(dataScopes));
         //        }
-        //    }
+        //    //}
         //}
         try {
             List<Field> fields = getAllFields(query.getClass(), new ArrayList<>());

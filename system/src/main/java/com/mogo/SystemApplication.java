@@ -6,6 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.core.env.Environment;
 
+/**
+ * @author miaogang
+ */
+
 @SpringBootApplication
 @EnableEurekaClient
 @Slf4j

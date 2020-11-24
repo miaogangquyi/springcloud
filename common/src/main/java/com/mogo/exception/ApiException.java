@@ -1,5 +1,6 @@
 package com.mogo.exception;
 
+import com.mogo.enums.ResponseEnum;
 import lombok.Getter;
 
 /**
@@ -9,6 +10,8 @@ import lombok.Getter;
  */
 @Getter
 public class ApiException extends RuntimeException {
+    private static final long serialVersionUID = 1960421775401041020L;
+
     private int code;
     private String msg;
 
@@ -24,5 +27,10 @@ public class ApiException extends RuntimeException {
         super(msg);
         this.code = code;
         this.msg = msg;
+    }
+    public ApiException(ResponseEnum responseEnum) {
+        super(responseEnum.getMsg());
+        this.code = responseEnum.getCode();
+        this.msg = responseEnum.getMsg();
     }
 }
