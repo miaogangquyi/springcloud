@@ -13,36 +13,27 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.mogo.domain.qc;
+package com.mogo.domain.dto;
 
-import com.mogo.annotation.Query;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.List;
 
 /**
  * @author miaogang
- * @date 2020-11-24
+ * @date 2020-11-23
  */
 @Data
-public class UserQueryCriteria implements Serializable {
-    private static final long serialVersionUID = 5588377219068091357L;
-    @Query
+@AllArgsConstructor
+public class RoleSmallDto implements Serializable {
+
+    private static final long serialVersionUID = 7862851302982554029L;
     private Long id;
-    //
-    //@Query(propName = "id", type = Query.Type.IN, joinName = "dept")
-    //private Set<Long> deptIds = new HashSet<>();
 
-    @Query(blurry = "email,username,nickName")
-    private String blurry;
+    private String name;
 
-    @Query
-    private Boolean enabled;
+    private Integer level;
 
-    private Long deptId;
-
-    @Query(type = Query.Type.BETWEEN)
-    private List<Timestamp> createTime;
+    private String dataScope;
 }

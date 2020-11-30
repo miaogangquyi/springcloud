@@ -1,20 +1,17 @@
 package com.mogo.domain;
 
+import com.mogo.domain.entity.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.LastModifiedBy;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @Author: miaogang
@@ -25,21 +22,21 @@ import java.util.Objects;
 @Getter
 @Setter
 @Table(name="sys_user")
-public class User implements Serializable {
+public class User extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = -2930296818436401360L;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "user_id")
     @NotNull(groups = Update.class)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@ManyToMany
-    //@JoinTable(name = "sys_users_roles",
-    //        joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "user_id")},
-    //        inverseJoinColumns = {@JoinColumn(name = "role_id",referencedColumnName = "role_id")})
-    //private Set<Role> roles;
+    @ManyToMany
+    @JoinTable(name = "sys_users_roles",
+            joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id",referencedColumnName = "role_id")})
+    private Set<Role> roles;
 
     //@ManyToMany
     //@JoinTable(name = "sys_users_jobs",
@@ -81,27 +78,6 @@ public class User implements Serializable {
 
     @Column(name = "pwd_reset_time")
     private Date pwdResetTime;
-    @CreatedBy
-    @Column(name = "create_by", updatable = false)
-    private String createBy;
-
-    @LastModifiedBy
-    @Column(name = "update_by")
-    private String updatedBy;
-
-    @CreationTimestamp
-    @Column(name = "create_time", updatable = false)
-    private Timestamp createTime;
-
-    @UpdateTimestamp
-    @Column(name = "update_time")
-    private Timestamp updateTime;
-
-    /* 分组校验 */
-    public @interface Create {}
-
-    /* 分组校验 */
-    public @interface Update {}
 
     @Override
     public boolean equals(Object o) {

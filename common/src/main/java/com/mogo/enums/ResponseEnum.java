@@ -22,9 +22,28 @@ public enum ResponseEnum {
 
     TOKEN_EXPIRED(1004,"Token已过期，请重新登录"),
 
-    USER_NOT_LOGIN(1005,"用户未登录"),
+    SERVE_EXCEPTION(1005, "服务端异常,请联系管理员！"),
 
-    USER_LOGIN_ERROR(1006,"用户名或密码错误"),
+    SQL_EXCEPTION(1006, "SQL异常,请联系管理员！"),
+
+    /**
+     *  用户 2000开始
+     */
+    USER_NOT_LOGIN(2000,"用户未登录"),
+    USER_LOGIN_ERROR(2001,"用户名或密码错误"),
+    USER_USERNAME_EXISTED(2002,"当前用户名已存在"),
+    USER_EMAIL_EXISTED(2003,"当前用户邮箱已存在"),
+
+
+
+    /**
+     * 角色2100开始
+     */
+    ROLE_NOT_EXISTED(2100,"未查询到当前角色"),
+    ROLE_NAME_EXISTED(2101,"当前角色已存在"),
+    ROLE_RELY_ON_USER(2102, "所选角色存在用户关联，请解除关联再试！"),
+
+
 
     ERROR(5000, "未知错误");
     /**

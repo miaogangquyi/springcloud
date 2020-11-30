@@ -68,11 +68,9 @@ public class JwtUtil {
             Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);
-        } catch (IllegalArgumentException e) {
-            return false;
         } catch (TokenExpiredException e) {
             throw new ApiException(ResponseEnum.TOKEN_EXPIRED);
-        } catch (JWTVerificationException e) {
+        } catch (IllegalArgumentException | JWTVerificationException e) {
             return false;
         }
         return true;
@@ -95,10 +93,10 @@ public class JwtUtil {
      * 获得token中的信息无需secret解密也能获得
      * @return token中包含的用户名
      */
-    public static String getUserId(String token) {
+    public static Long getUserId(String token) {
         try {
             DecodedJWT jwt = JWT.decode(token);
-            return jwt.getClaim("userId").asString();
+            return jwt.getClaim("userId").asLong();
         } catch (JWTDecodeException e) {
             return null;
         }

@@ -53,8 +53,12 @@ public class ResponseVo<T> {
     public static ResponseVo fail(Integer code, String msg) {
         return new ResponseVo(code,msg,null);
     }
-
-
+    /**
+     * 有参数返回失败
+     */
+    public static ResponseVo fail(ResponseEnum responseEnum) {
+        return new ResponseVo(responseEnum.getCode(),responseEnum.getMsg(),null);
+    }
 
 
 }

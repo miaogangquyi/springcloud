@@ -24,7 +24,8 @@ public class TokenInterceptor implements HandlerInterceptor {
     private  UserService userService;
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
-        String authHeader = httpServletRequest.getHeader(JwtUtil.TOKEN_HEADER);// 从 http 请求头中取出 token
+        // 从 http 请求头中取出 token
+        String authHeader = httpServletRequest.getHeader(JwtUtil.TOKEN_HEADER);
         // 如果不是映射到方法直接通过
         if (authHeader == null || !authHeader.startsWith(JwtUtil.TOKEN_PREFIX)) {
             throw new ApiException(ResponseEnum.USER_NOT_LOGIN);

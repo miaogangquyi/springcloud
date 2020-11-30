@@ -14,10 +14,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.ObjectUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Set;
 
 /**
  * @Author: miaogang
@@ -86,9 +88,78 @@ public class UserService {
         }
         //取得token
         String token = authHeader.substring(7);
-        String userId = JwtUtil.getUserId(token);
+        Long userId = JwtUtil.getUserId(token);
         //redisTemplate.delete(LOGIN_REDIS_KEY+userId);
         //LOG.info("从redis中删除token:{}", token);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void create(User resources) {
+        if (userRepository.findByUsername(resources.getUsername()) != null) {
+            throw new ApiException(ResponseEnum.USER_USERNAME_EXISTED);
+        }
+        if (userRepository.findByEmail(resources.getEmail()) != null) {
+            throw new ApiException(ResponseEnum.USER_EMAIL_EXISTED);
+        }
+        // 默认密码 123456
+        resources.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
+        userRepository.save(resources);
+    }
+
+
+    @Transactional(rollbackFor = Exception.class)
+    public void update(User resources) {
+        User user = userRepository.findById(resources.getId()).orElseGet(User::new);
+        User user1 = userRepository.findByUsername(resources.getUsername());
+        User user2 = userRepository.findByEmail(resources.getEmail());
+
+        if (user1 != null && !user.getId().equals(user1.getId())) {
+            throw new ApiException(ResponseEnum.USER_USERNAME_EXISTED);        }
+
+        if (user2 != null && !user.getId().equals(user2.getId())) {
+            throw new ApiException(ResponseEnum.USER_EMAIL_EXISTED);
+        }
+        // 如果用户的角色改变
+        //if (!resources.getRoles().equals(user.getRoles())) {
+        //    redisUtils.del(CacheKey.DATE_USER + resources.getId());
+        //    redisUtils.del(CacheKey.MENU_USER + resources.getId());
+        //    redisUtils.del(CacheKey.ROLE_AUTH + resources.getId());
+        //}
+        // 如果用户名称修改
+        //if(!resources.getUsername().equals(user.getUsername())){
+        //    redisUtils.del("user::username:" + user.getUsername());
+        //}
+        // 如果用户被禁用，则清除用户登录信息
+        //if(!resources.getEnabled()){
+        //    onlineUserService.kickOutForUsername(resources.getUsername());
+        //}
+        user.setUsername(resources.getUsername());
+        user.setEmail(resources.getEmail());
+        user.setEnabled(resources.getEnabled());
+        //user.setRoles(resources.getRoles());
+        //user.setDept(resources.getDept());
+        //user.setJobs(resources.getJobs());
+        user.setPhone(resources.getPhone());
+        user.setNickName(resources.getNickName());
+        //user.setGender(resources.getGender());
+        userRepository.save(user);
+        // 清除缓存
+        //delCaches(user.getId(), user.getUsername());
+    }
+
+    /**
+     * @Description: 根据id删除数据
+     * @param ids 多条用户id
+     */
+
+    @Transactional(rollbackFor = Exception.class)
+    public void delete(Set<Long> ids) {
+        //for (Long id : ids) {
+        //    // 清理缓存
+        //    UserDto user = findById(id);
+        //    delCaches(user.getId(), user.getUsername());
+        //}
+        userRepository.deleteAllByIdIn(ids);
     }
 
 
