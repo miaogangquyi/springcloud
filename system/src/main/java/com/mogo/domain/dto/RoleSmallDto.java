@@ -17,6 +17,7 @@ package com.mogo.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -26,6 +27,7 @@ import java.io.Serializable;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class RoleSmallDto implements Serializable {
 
     private static final long serialVersionUID = 7862851302982554029L;

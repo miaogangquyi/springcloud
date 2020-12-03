@@ -1,6 +1,6 @@
 package com.mogo.repository;
 
-import com.mogo.domain.Menu;
+import com.mogo.domain.entity.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;

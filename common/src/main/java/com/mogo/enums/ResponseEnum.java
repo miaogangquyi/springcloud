@@ -26,6 +26,16 @@ public enum ResponseEnum {
 
     SQL_EXCEPTION(1006, "SQL异常,请联系管理员！"),
 
+    DUPLICATE_KEY_ERROR(1006, "字段重复"),
+
+    IS_NULL(1007, "查询为空"),
+
+    EXTERNAL_LINKS_EXCEPTION(1008, "外链必须以http://或者https://开头"),
+
+    NEW_CANNOT_HAVE_ID(1009, "新增时不能携带ID"),
+
+    PERMISSION_DENIED(10010, "权限不足"),
+
     /**
      *  用户 2000开始
      */
@@ -36,12 +46,22 @@ public enum ResponseEnum {
 
 
 
+
+
     /**
      * 角色2100开始
      */
     ROLE_NOT_EXISTED(2100,"未查询到当前角色"),
     ROLE_NAME_EXISTED(2101,"当前角色已存在"),
     ROLE_RELY_ON_USER(2102, "所选角色存在用户关联，请解除关联再试！"),
+
+
+    /**
+     * 角色2200开始
+     */
+    MENU_NOT_EXISTED(2200,"未查询到当前菜单"),
+    MENU_TITLE_EXISTED(2201,"当前菜单标题已存在"),
+    MENU_PARENT_CANNOT_ITSELF(2202, "上级不能是自己"),
 
 
 

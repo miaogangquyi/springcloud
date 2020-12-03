@@ -1,8 +1,8 @@
 package com.mogo.domain.mapstruct;
 
 
-import com.mogo.domain.Menu;
 import com.mogo.domain.dto.MenuDto;
+import com.mogo.domain.entity.Menu;
 import com.mogo.domain.mapper.BaseMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;

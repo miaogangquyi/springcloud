@@ -1,7 +1,6 @@
-package com.mogo.domain;
+package com.mogo.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.mogo.domain.entity.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 

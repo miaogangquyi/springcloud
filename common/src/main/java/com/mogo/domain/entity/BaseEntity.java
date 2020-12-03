@@ -40,6 +40,7 @@ import java.sql.Timestamp;
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity implements Serializable {
 
+    private static final long serialVersionUID = 8054125862772631081L;
     @CreatedBy
     @Column(name = "create_by", updatable = false)
     private String createBy;

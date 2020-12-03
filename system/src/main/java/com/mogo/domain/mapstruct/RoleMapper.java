@@ -15,8 +15,8 @@
  */
 package com.mogo.domain.mapstruct;
 
-import com.mogo.domain.Role;
 import com.mogo.domain.dto.RoleDto;
+import com.mogo.domain.entity.Role;
 import com.mogo.domain.mapper.BaseMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;

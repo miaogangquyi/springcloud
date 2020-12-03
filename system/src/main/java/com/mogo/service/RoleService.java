@@ -1,9 +1,10 @@
 package com.mogo.service;
 
 
-import com.mogo.domain.Role;
-import com.mogo.domain.User;
 import com.mogo.domain.dto.RoleDto;
+import com.mogo.domain.dto.RoleSmallDto;
+import com.mogo.domain.entity.Role;
+import com.mogo.domain.entity.User;
 import com.mogo.domain.mapstruct.RoleMapper;
 import com.mogo.domain.qc.RoleQueryCriteria;
 import com.mogo.enums.ResponseEnum;
@@ -14,13 +15,17 @@ import com.mogo.util.QueryHelp;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -113,8 +118,15 @@ public class RoleService {
         roleRepository.deleteAllByIdIn(ids);
     }
 
-    public List<RoleDto> findByUsersId(Long id) {
-        return roleMapper.toDto(new ArrayList<>(roleRepository.findByUserId(id)));
+    public List<RoleSmallDto> findByUsersId(Long id) {
+        return this.roleRepository.findByUserId(id).stream().map(this::conv).collect(Collectors.toList());
+    }
+
+    private RoleSmallDto conv(Role role) {
+        RoleSmallDto roleSmallDto = new RoleSmallDto();
+        BeanUtils.copyProperties(role ,roleSmallDto);
+        return roleSmallDto;
+
     }
 
     public Integer findByRoles(Set<Role> roles) {

@@ -1,6 +1,5 @@
-package com.mogo.domain;
+package com.mogo.domain.entity;
 
-import com.mogo.domain.entity.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 

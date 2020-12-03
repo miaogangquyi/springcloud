@@ -2,6 +2,7 @@ package com.mogo.interceptor.handler;
 
 import com.mogo.enums.ResponseEnum;
 import com.mogo.exception.ApiException;
+import com.mogo.exception.DuplicateKeyException;
 import com.mogo.vo.ResponseVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -29,11 +30,17 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     private ResponseVo exceptionHandler(Exception e) {
         log.error("[服务端异常]错误信息:{}",e.toString());
+        e.printStackTrace();
         return ResponseVo.fail(ResponseEnum.SERVE_EXCEPTION);
     }
     @ExceptionHandler(value = SQLException.class)
     private ResponseVo sqlExceptionHandler(SQLException e) {
         log.error("[SQL异常],错误信息:{}",e.toString());
         return ResponseVo.fail(ResponseEnum.SQL_EXCEPTION);
+    }
+    @ExceptionHandler(value = DuplicateKeyException.class)
+    private ResponseVo duplicateKeyExceptionHandler(DuplicateKeyException e) {
+        log.error("[键值重复],错误信息:{}",e.getMessage());
+        return ResponseVo.fail(ResponseEnum.DUPLICATE_KEY_ERROR.getCode(),e.getMessage());
     }
 }

@@ -1,7 +1,6 @@
-package com.mogo.domain;
+package com.mogo.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.mogo.domain.entity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +22,6 @@ import java.util.Set;
 @Table(name = "sys_menu")
 public class Menu extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 8104208422850465691L;
     @Id
     @Column(name = "menu_id")
     @NotNull(groups = {Update.class})

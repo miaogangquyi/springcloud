@@ -16,7 +16,6 @@ import java.util.Objects;
 @Setter
 public class MenuDto extends BaseDto implements Serializable {
 
-    private static final long serialVersionUID = -2623186078270805628L;
     private Long id;
 
     private List<MenuDto> children;

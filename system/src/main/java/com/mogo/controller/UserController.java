@@ -1,6 +1,6 @@
 package com.mogo.controller;
 
-import com.mogo.domain.User;
+import com.mogo.domain.entity.User;
 import com.mogo.domain.qc.UserQueryCriteria;
 import com.mogo.service.UserService;
 import com.mogo.vo.ResponseVo;

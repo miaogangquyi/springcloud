@@ -15,8 +15,8 @@
  */
 package com.mogo.domain.mapstruct;
 
-import com.mogo.domain.User;
 import com.mogo.domain.dto.UserDto;
+import com.mogo.domain.entity.User;
 import com.mogo.domain.mapper.BaseMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
