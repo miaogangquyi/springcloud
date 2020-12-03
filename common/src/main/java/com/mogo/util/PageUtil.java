@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 miaogang
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import java.util.Map;
 
 /**
  * 分页工具
- * @author Zheng Jie
+ * @author miaogang
  * @date 2018-12-10
  */
 public class PageUtil extends cn.hutool.core.util.PageUtil {

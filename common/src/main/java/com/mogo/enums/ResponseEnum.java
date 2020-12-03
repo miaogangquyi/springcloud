@@ -34,7 +34,9 @@ public enum ResponseEnum {
 
     NEW_CANNOT_HAVE_ID(1009, "新增时不能携带ID"),
 
-    PERMISSION_DENIED(10010, "权限不足"),
+    PERMISSION_DENIED(1010, "权限不足"),
+
+    FILE_SIZE_1M(1011, "文件大小超过1M"),
 
     /**
      *  用户 2000开始
@@ -62,6 +64,21 @@ public enum ResponseEnum {
     MENU_NOT_EXISTED(2200,"未查询到当前菜单"),
     MENU_TITLE_EXISTED(2201,"当前菜单标题已存在"),
     MENU_PARENT_CANNOT_ITSELF(2202, "上级不能是自己"),
+
+    /**
+     * 代码生成
+     */
+    GENERATOR_EXCEPTION(2300,"代码生成错误，请联系管理员"),
+
+    CONFIG_GENERATOR_FIRST_EXCEPTION(2301,"请先配置生成器"),
+
+    GENERATOR_FILE_ERROR(2302,"生成失败，请手动处理已生成的文件"),
+
+    GENERATOR_ZIP_ERROR(2303,"打包失败"),
+
+    GENERATOR_ENV_ERROR(2304,"此环境不允许生成代码，请选择预览或者下载查看！"),
+
+    GENERATOR_OPTION_ERROR(2305,"没有这个选项"),
 
 
 

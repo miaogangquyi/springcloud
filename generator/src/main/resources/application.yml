@@ -57,3 +57,22 @@ spring:
         wall:
           config:
             multi-statement-allow: true
+
+#是否允许生成代码，生产环境设置为false
+generator:
+  enabled: true
+
+# 文件存储路径
+file:
+  mac:
+    path: ~/file/
+    avatar: ~/avatar/
+  linux:
+    path: /home/eladmin/file/
+    avatar: /home/eladmin/avatar/
+  windows:
+    path: C:\eladmin\file\
+    avatar: C:\eladmin\avatar\
+  # 文件大小 /M
+  maxSize: 100
+  avatarMaxSize: 5
