@@ -17,6 +17,12 @@ spring:
        predicates[0]:
          name: Path
          args[0]: /system/**
+      routes[1]:
+        id: generator
+        uri: lb://generator
+        predicates[0]:
+          name: Path
+          args[0]: /generator/**
 
 
 

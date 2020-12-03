@@ -13,15 +13,14 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
 
 @SpringBootApplication
 @EnableEurekaClient
-//@EnableOpenApi
+@EnableOpenApi
 @Slf4j
 public class GeneratorApplication {
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(GeneratorApplication.class);
         Environment env = app.run(args).getEnvironment();
         log.info("启动成功");
-        log.info("System地址\tHttp://127.0.0.1:{}",env.getProperty("server.port"));
-
+        log.info("Generator地址\tHttp://127.0.0.1:{}",env.getProperty("server.port"));
     }
 
 
