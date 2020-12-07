@@ -9,7 +9,7 @@
         <#if queryColumns??>
           <#list queryColumns as column>
             <#if column.queryType != 'BetWeen'>
-        <label class="el-form-item-label"><#if column.remark != ''>${column.remark}<#else>${column.changeColumnName}</#if></label>
+<#--        <label class="el-form-item-label"><#if column.remark != ''>${column.remark}<#else>${column.changeColumnName}</#if></label>-->
         <el-input v-model="query.${column.changeColumnName}" clearable placeholder="<#if column.remark != ''>${column.remark}<#else>${column.changeColumnName}</#if>" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
             </#if>
           </#list>
@@ -30,7 +30,7 @@
       </div>
     </#if>
       <!--如果想在工具栏加入更多按钮，可以使用插槽方式， slot = 'left' or 'right'-->
-      <crudOperation :permission="permission" />
+      <crudOperation />
       <!--表单组件-->
       <el-dialog :close-on-click-modal="false" :before-close="crud.cancelCU" :visible.sync="crud.status.cu > 0" :title="crud.status.title" width="500px">
         <el-form ref="form" :model="form" <#if isNotNullColumns??>:rules="rules"</#if> size="small" label-width="80px">
@@ -90,18 +90,17 @@
                 <#else>
         <el-table-column prop="${column.changeColumnName}" label="<#if column.remark != ''>${column.remark}<#else>${column.changeColumnName}</#if>">
           <template slot-scope="scope">
-            <span>{{ parseTime(scope.row.${column.changeColumnName}) }}</span>
+            <span>{{ scope.row.${column.changeColumnName} | fmtTime }}</span>
           </template>
         </el-table-column>
                 </#if>
             </#if>
             </#list>
         </#if>
-        <el-table-column v-permission="['admin','${changeClassName}:edit','${changeClassName}:del']" label="操作" width="150px" align="center">
+        <el-table-column  label="操作" width="150px" align="center">
           <template slot-scope="scope">
             <udOperation
               :data="scope.row"
-              :permission="permission"
             />
           </template>
         </el-table-column>
@@ -113,7 +112,7 @@
 </template>
 
 <script>
-import crud${className} from '@/api/${changeClassName}'
+import crud${className} from '@/api/${moduleName}/${changeClassName}'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 import rrOperation from '@crud/RR.operation'
 import crudOperation from '@crud/CRUD.operation'
@@ -129,7 +128,7 @@ export default {
   dicts: [<#if hasDict??><#list dicts as dict>'${dict}'<#if dict_has_next>, </#if></#list></#if>],
   </#if>
   cruds() {
-    return CRUD({ title: '${apiAlias}', url: 'api/${changeClassName}', idField: '${pkChangeColName}', sort: '${pkChangeColName},desc', crudMethod: { ...crud${className} }})
+    return CRUD({ title: '${apiAlias}', url: '${moduleName}/${changeClassName}', idField: '${pkChangeColName}', sort: '${pkChangeColName},desc', crudMethod: { ...crud${className} }})
   },
   data() {
     return {

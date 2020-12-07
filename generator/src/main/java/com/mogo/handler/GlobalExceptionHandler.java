@@ -21,6 +21,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = GeneratorException.class)
     private ResponseVo generatorException(GeneratorException e) {
         log.error("[代码生成异常],错误码:{},错误信息:{}",e.getCode(),e.getMsg());
+        e.printStackTrace();
         return ResponseVo.fail(e.getCode(),e.getMsg());
     }
 
