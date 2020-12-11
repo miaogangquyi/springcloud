@@ -6,6 +6,11 @@ server:
 spring:
   application:
     name: generator
+  cloud:
+    # nacos
+    nacos:
+      discovery:
+        server-addr: http://47.93.123.96:8848
   #配置 Jpa
   jpa:
     properties:
