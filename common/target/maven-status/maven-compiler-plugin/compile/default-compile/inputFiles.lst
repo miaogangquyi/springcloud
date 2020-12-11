@@ -3,6 +3,7 @@
 /Users/miaogang/code/self/java/springcloud/common/src/main/java/com/mogo/domain/mapper/BaseMapper.java
 /Users/miaogang/code/self/java/springcloud/common/src/main/java/com/mogo/exception/DuplicateKeyException.java
 /Users/miaogang/code/self/java/springcloud/common/src/main/java/com/mogo/util/QueryHelp.java
+/Users/miaogang/code/self/java/springcloud/common/src/main/java/com/mogo/exception/GeneratorException.java
 /Users/miaogang/code/self/java/springcloud/common/src/main/java/com/mogo/annotation/Query.java
 /Users/miaogang/code/self/java/springcloud/common/src/main/java/com/mogo/exception/ApiException.java
 /Users/miaogang/code/self/java/springcloud/common/src/main/java/com/mogo/util/PageUtil.java

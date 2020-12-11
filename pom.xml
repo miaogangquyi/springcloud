@@ -174,5 +174,17 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>sac-releases</id>
+            <name>sac-releases</name>
+            <url>http://47.93.123.96:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>sac-snapshots</id>
+            <name>sac-snapshots</name>
+            <url>http://47.93.123.96:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>

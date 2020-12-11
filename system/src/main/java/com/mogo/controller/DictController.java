@@ -27,9 +27,9 @@ public class DictController {
     private final DictService dictService;
 
     //@ApiOperation("导出数据")
-    @GetMapping(value = "/download")
-    public void download(HttpServletResponse response, DictQueryCriteria criteria) throws IOException {
-    }
+    //@GetMapping(value = "/download")
+    //public void download(HttpServletResponse response, DictQueryCriteria criteria) throws IOException {
+    //}
 
     @GetMapping
     @ApiOperation("查询字典")
