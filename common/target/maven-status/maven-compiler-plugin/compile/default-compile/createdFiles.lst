@@ -1,5 +1,6 @@
 com/mogo/vo/ResponseVo.class
 com/mogo/util/ValidationUtil.class
+com/mogo/exception/GeneratorException.class
 com/mogo/util/QueryHelp.class
 com/mogo/SwaggerConfig.class
 com/mogo/domain/entity/BaseEntity$Update.class
