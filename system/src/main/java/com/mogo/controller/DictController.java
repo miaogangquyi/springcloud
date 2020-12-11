@@ -1,16 +1,18 @@
 
 package com.mogo.controller;
 import com.mogo.domain.entity.Dict;
-import com.mogo.service.DictService;
 import com.mogo.domain.qc.DictQueryCriteria;
-import org.springframework.data.domain.Pageable;
-import lombok.RequiredArgsConstructor;
+import com.mogo.service.DictService;
 import com.mogo.vo.ResponseVo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.*;
-import java.io.IOException;
+
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
 * @author miaogang
@@ -24,7 +26,7 @@ public class DictController {
 
     private final DictService dictService;
 
-    @ApiOperation("导出数据")
+    //@ApiOperation("导出数据")
     @GetMapping(value = "/download")
     public void download(HttpServletResponse response, DictQueryCriteria criteria) throws IOException {
     }
