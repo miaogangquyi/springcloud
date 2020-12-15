@@ -3,14 +3,20 @@ server:
   servlet:
     context-path: /generator
 
+
 spring:
   application:
     name: generator
+  profiles:
+    active: dev
   cloud:
     # nacos
     nacos:
       discovery:
-        server-addr: http://47.93.123.96:8848
+        server-addr: 47.93.123.96:8848
+      config:
+        server-addr: 47.93.123.96:8848
+        file-extension: yaml
   #配置 Jpa
   jpa:
     properties:

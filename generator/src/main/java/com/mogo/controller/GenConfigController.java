@@ -7,6 +7,8 @@ import com.mogo.vo.ResponseVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +20,17 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/genConfig")
 @Api(tags = "系统：代码生成器配置管理")
+@RefreshScope
 public class GenConfigController {
 
+    @Value("${gen-key}")
+    private String key;
     private final GenConfigService genConfigService;
+
+    @GetMapping("/test")
+    public String test() {
+        return key;
+    }
 
     @ApiOperation("查询")
     @GetMapping(value = "/{tableName}")

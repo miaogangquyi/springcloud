@@ -1,0 +1,17 @@
+server:
+  port: 9002
+  servlet:
+    context-path: /generator
+
+
+spring:
+  application:
+    name: generator
+  cloud:
+    # nacos
+    nacos:
+      config:
+        server-addr: 47.93.123.96:8848
+        file-extension: yaml
+        refresh-enabled: true
+

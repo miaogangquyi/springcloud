@@ -1,22 +1,21 @@
 server:
-  port: 9002
-  servlet:
-    context-path: /generator
-
+  port: 9003
 
 spring:
   application:
-    name: generator
-  profiles:
-    active: dev
+    name: auth
   cloud:
     # nacos
     nacos:
       discovery:
-        server-addr: 47.93.123.96:8848
-      config:
-        server-addr: 47.93.123.96:8848
-        file-extension: yaml
+        server-addr: http://47.93.123.96:8848
+  redis:
+    database: 0
+    port: 6379
+    host: 47.93.123.96
+    password: java6397
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
   #配置 Jpa
   jpa:
     properties:
@@ -69,21 +68,13 @@ spring:
           config:
             multi-statement-allow: true
 
-#是否允许生成代码，生产环境设置为false
-generator:
-  enabled: true
 
-# 文件存储路径
-file:
-  mac:
-    path: ~/file/
-    avatar: ~/avatar/
-  linux:
-    path: /home/eladmin/file/
-    avatar: /home/eladmin/avatar/
-  windows:
-    path: C:\eladmin\file\
-    avatar: C:\eladmin\avatar\
-  # 文件大小 /M
-  maxSize: 100
-  avatarMaxSize: 5
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+
+
